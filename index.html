@@ -5,19 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
 
     <title>Ani-cal</title>
+    <link rel="icon" href="https://i.pinimg.com/236x/11/7f/a5/117fa517c96612f4a0b8fde2e74b9914.jpg" type="image/png">
 
-  
 </head>
-
 <body>
 
-    <img id="wallpaper" src="https://picsum.photos/1920/1080?random=1" alt="Wallpaper">
-    
-    <div id="clock">12:00</div>
+    <img id="wallpaper" class="active" src="https://picsum.photos/1920/1080?random=1" alt="Wallpaper">
+    <img id="wallpaper2" src="" alt="">
+
+    <div id="time-container">
+
+        <div id="clock">12:00</div>
+        <div id="date">DATE...</div>
+
+        <div id="weather">Locating...</div>
+
+    </div>
+
+    <button id="settings-toggle" title="Settings">⚙</button>
+
+    <div id="settings-panel">
+
+        <label>
+            Wallpaper refresh
+            <select id="setting-interval">
+                <option value="0">Off</option>
+                <option value="60000">1 minute</option>
+                <option value="300000">5 minutes</option>
+                <option value="900000">15 minutes</option>
+                <option value="1800000">30 minutes</option>
+                <option value="3600000">1 hour</option>
+            </select>
+        </label>
+
+        <label>
+            Clock format
+            <select id="setting-format">
+                <option value="12">12 hour</option>
+                <option value="24">24 hour</option>
+            </select>
+        </label>
+
+        <label>
+            Temperature
+            <select id="setting-units">
+                <option value="c">Celsius</option>
+                <option value="f">Fahrenheit</option>
+            </select>
+        </label>
+
+        <button id="settings-close">Done</button>
+
+    </div>
 
     <script src="script.js"></script>
-
+    
 </body>
 </html>
