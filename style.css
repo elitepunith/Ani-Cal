@@ -78,7 +78,7 @@ html {
     border-radius: 50%;
     border: none;
     background: rgba(0, 0, 0, 0.35);
-    color: rgb(77, 31, 31);
+    color: rgb(148, 116, 116);
     font-size: 1.3rem;
     cursor: pointer;
     opacity: 0.5;
@@ -96,11 +96,11 @@ html {
     bottom: 75px;
     right: 20px;
     z-index: 20;
-    background: rgba(20, 20, 20, 0.85);
+    background: rgba(197, 30, 30, 0.85);
     backdrop-filter: blur(6px);
     border-radius: 10px;
     padding: 18px 20px;
-    color: rgb(77, 36, 36);
+    color: rgb(168, 141, 141);
     font-family: 'Courier New', Courier, monospace;
     min-width: 220px;
 }
@@ -120,7 +120,7 @@ html {
 
 #settings-panel select {
     background: rgba(255, 255, 255, 0.1);
-    color: rgb(101, 26, 26);
+    color: rgb(206, 187, 187);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     padding: 5px;
@@ -129,7 +129,7 @@ html {
 
 #settings-close {
     background: rgba(255, 255, 255, 0.15);
-    color: rgb(83, 33, 33);
+    color: rgb(174, 158, 158);
     border: none;
     border-radius: 5px;
     padding: 7px;
@@ -139,5 +139,5 @@ html {
 
 #settings-close:hover {
 
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(127, 29, 29, 0.25);
 }
