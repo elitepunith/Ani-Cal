@@ -1,0 +1,19 @@
+{
+  "short_name": "Ani-cal",
+  "name": "Ani-cal Clock",
+  "description": "A full-screen wallpaper clock with local weather.",
+  "icons": [
+    {
+      "src": "https://i.pinimg.com/236x/11/7f/a5/117fa517c96612f4a0b8fde2e74b9914.jpg",
+      "type": "image/png",
+      "sizes": "236x236",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "index.html",
+  "scope": "./",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "display": "standalone",
+  "orientation": "landscape"
+}
