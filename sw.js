@@ -31,8 +31,7 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
 
-    // let wallpaper/weather requests hit the network as normal, only
-    // serve the app shell files from cache when offline
+    
     if (!APP_SHELL.some((file) => e.request.url.endsWith(file))) {
         return;
     }
