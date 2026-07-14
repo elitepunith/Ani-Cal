@@ -4,9 +4,14 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#05070a">
 
     <title>Ani-cal</title>
     <link rel="icon" href="https://i.pinimg.com/236x/11/7f/a5/117fa517c96612f4a0b8fde2e74b9914.jpg" type="image/png">
@@ -14,21 +19,185 @@
 </head>
 <body>
 
-    <img id="wallpaper" class="active" src="https://picsum.photos/1920/1080?random=1" alt="Wallpaper">
+    <!-- Icon sprite. Every <use> below points at one of these symbols
+         instead of pulling in an emoji or an icon font. -->
+    <svg class="icon-defs" aria-hidden="true">
+        <defs>
+
+            <symbol id="icon-forecast" viewBox="0 0 24 24">
+                <circle cx="7.5" cy="7.5" r="3"></circle>
+                <path d="M5 17h11a3.5 3.5 0 0 0 .5-6.96 5 5 0 0 0-9.53-1.9A4 4 0 0 0 5 17z"></path>
+            </symbol>
+
+            <symbol id="icon-calendar" viewBox="0 0 24 24">
+                <rect x="3" y="4.5" width="18" height="16" rx="2.5"></rect>
+                <path d="M3 9.5h18"></path>
+                <path d="M8 2.5v4M16 2.5v4"></path>
+                <circle cx="8" cy="14" r="1"></circle>
+                <circle cx="12" cy="14" r="1"></circle>
+                <circle cx="16" cy="14" r="1"></circle>
+            </symbol>
+
+            <symbol id="icon-timer" viewBox="0 0 24 24">
+                <circle cx="12" cy="13" r="8"></circle>
+                <path d="M12 13V9"></path>
+                <path d="M9.5 2.5h5"></path>
+                <path d="M18.5 6.5l1.3-1.3"></path>
+            </symbol>
+
+            <symbol id="icon-settings" viewBox="0 0 24 24">
+                <path d="M4 6h10M17 6h3"></path>
+                <circle cx="14" cy="6" r="2"></circle>
+                <path d="M4 12h3M10 12h10"></path>
+                <circle cx="7" cy="12" r="2"></circle>
+                <path d="M4 18h10M17 18h3"></path>
+                <circle cx="14" cy="18" r="2"></circle>
+            </symbol>
+
+            <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+                <path d="M15 5l-7 7 7 7"></path>
+            </symbol>
+
+            <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+                <path d="M9 5l7 7-7 7"></path>
+            </symbol>
+
+            <symbol id="icon-weather-clear" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <path d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M5.6 18.4l1.7-1.7M16.7 7.3l1.7-1.7"></path>
+            </symbol>
+
+            <symbol id="icon-weather-fog" viewBox="0 0 24 24">
+                <path d="M5 17h11a3.5 3.5 0 0 0 .5-6.96 5 5 0 0 0-9.53-1.9A4 4 0 0 0 5 17z"></path>
+                <path d="M4 20h16M6 22.5h12"></path>
+            </symbol>
+
+            <symbol id="icon-weather-rain" viewBox="0 0 24 24">
+                <path d="M5 13h11a3.5 3.5 0 0 0 .5-6.96 5 5 0 0 0-9.53-1.9A4 4 0 0 0 5 13z"></path>
+                <path d="M8 17l-1.2 2.4M12 17l-1.2 2.4M16 17l-1.2 2.4"></path>
+            </symbol>
+
+            <symbol id="icon-weather-snow" viewBox="0 0 24 24">
+                <path d="M5 13h11a3.5 3.5 0 0 0 .5-6.96 5 5 0 0 0-9.53-1.9A4 4 0 0 0 5 13z"></path>
+                <path d="M8 18v3M6.5 19.5h3M12 18v3M10.5 19.5h3M16 18v3M14.5 19.5h3"></path>
+            </symbol>
+
+            <symbol id="icon-weather-storm" viewBox="0 0 24 24">
+                <path d="M5 13h11a3.5 3.5 0 0 0 .5-6.96 5 5 0 0 0-9.53-1.9A4 4 0 0 0 5 13z"></path>
+                <path d="M13 15l-3 5h3l-2 4"></path>
+            </symbol>
+
+            <symbol id="icon-weather-unknown" viewBox="0 0 24 24">
+                <path d="M12 3a2 2 0 0 0-2 2v9.5a4 4 0 1 0 4 0V5a2 2 0 0 0-2-2z"></path>
+                <path d="M12 15v-6"></path>
+            </symbol>
+
+            <symbol id="icon-bolt" viewBox="0 0 24 24">
+                <path d="M12 2 4 14h6l-1 8 9-13h-6l1-7z" fill="currentColor" stroke="none"></path>
+            </symbol>
+
+        </defs>
+    </svg>
+
+    <img id="wallpaper" class="active" src="https://picsum.photos/1920/1080?random=1" alt="">
     <img id="wallpaper2" src="" alt="">
 
-    <div id="time-container">
+    <div class="scrim"></div>
 
-        <div id="clock">12:00</div>
-        <div id="date">DATE...</div>
-
-        <div id="weather">Locating...</div>
-
+    <div id="battery-badge" class="hud-badge">
+        <svg class="battery-icon" viewBox="0 0 26 14" aria-hidden="true">
+            <rect x="1" y="1" width="21" height="12" rx="2.5" class="battery-shell"></rect>
+            <rect x="23" y="4.5" width="2.5" height="5" rx="1" class="battery-cap"></rect>
+            <rect id="battery-fill" x="3" y="3" width="0" height="8" rx="1" class="battery-fill"></rect>
+        </svg>
+        <svg id="battery-bolt" class="icon battery-bolt" aria-hidden="true"><use href="#icon-bolt"></use></svg>
+        <span id="battery-label">--%</span>
     </div>
 
-    <button id="settings-toggle" title="Settings">⚙</button>
+    <main id="time-container">
 
-    <div id="settings-panel">
+        <div id="clock-digital" class="clock-face">12:00</div>
+
+        <svg id="clock-analog" class="clock-face" viewBox="0 0 200 200" style="display:none;">
+            <circle class="dial-face" cx="100" cy="100" r="92"></circle>
+            <g id="dial-ticks"></g>
+            <line id="hand-hour" class="dial-hand hand-hour" x1="100" y1="100" x2="100" y2="55"></line>
+            <line id="hand-minute" class="dial-hand hand-minute" x1="100" y1="100" x2="100" y2="34"></line>
+            <line id="hand-second" class="dial-hand hand-second" x1="100" y1="112" x2="100" y2="26"></line>
+            <circle class="dial-pin" cx="100" cy="100" r="4"></circle>
+        </svg>
+
+        <div id="date">DATE...</div>
+
+        <div id="weather">
+            <svg class="icon weather-icon" aria-hidden="true"><use id="weather-icon-use" href="#icon-weather-unknown"></use></svg>
+            <span id="weather-temp">Locating&hellip;</span>
+        </div>
+
+    </main>
+
+    <nav id="dock">
+        <button class="dock-btn" data-panel="forecast-panel" title="Forecast" aria-label="Weather forecast">
+            <svg class="icon"><use href="#icon-forecast"></use></svg>
+        </button>
+        <button class="dock-btn" data-panel="calendar-panel" title="Calendar" aria-label="Calendar">
+            <svg class="icon"><use href="#icon-calendar"></use></svg>
+        </button>
+        <button class="dock-btn" data-panel="pomodoro-panel" title="Focus timer" aria-label="Pomodoro timer">
+            <svg class="icon"><use href="#icon-timer"></use></svg>
+        </button>
+        <button class="dock-btn" data-panel="settings-panel" title="Settings" aria-label="Settings">
+            <svg class="icon"><use href="#icon-settings"></use></svg>
+        </button>
+    </nav>
+
+    <section id="forecast-panel" class="panel">
+        <header class="panel-head">
+            <h2>5-day outlook</h2>
+        </header>
+        <div id="forecast-list" class="forecast-list">
+            <p class="panel-empty">Fetching forecast&hellip;</p>
+        </div>
+    </section>
+
+    <section id="calendar-panel" class="panel">
+        <header class="panel-head panel-head-nav">
+            <button id="cal-prev" class="panel-nav-btn" aria-label="Previous month">
+                <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+            </button>
+            <h2 id="cal-month-label">Month</h2>
+            <button id="cal-next" class="panel-nav-btn" aria-label="Next month">
+                <svg class="icon"><use href="#icon-chevron-right"></use></svg>
+            </button>
+        </header>
+        <div id="cal-grid" class="cal-grid"></div>
+    </section>
+
+    <section id="pomodoro-panel" class="panel">
+        <header class="panel-head">
+            <h2 id="pomo-mode">Focus</h2>
+        </header>
+
+        <div class="pomo-ring-wrap">
+            <svg viewBox="0 0 120 120" class="pomo-ring-svg">
+                <circle class="pomo-ring-track" cx="60" cy="60" r="54"></circle>
+                <circle id="pomo-ring" class="pomo-ring-progress" cx="60" cy="60" r="54"></circle>
+            </svg>
+            <div id="pomo-time" class="pomo-time">25:00</div>
+        </div>
+
+        <p id="pomo-sessions" class="pomo-sessions">Sessions: 0</p>
+
+        <div class="pomo-controls">
+            <button id="pomo-start">Start</button>
+            <button id="pomo-reset">Reset</button>
+        </div>
+    </section>
+
+    <section id="settings-panel" class="panel">
+        <header class="panel-head">
+            <h2>Settings</h2>
+        </header>
 
         <label>
             Wallpaper refresh
@@ -39,6 +208,23 @@
                 <option value="900000">15 minutes</option>
                 <option value="1800000">30 minutes</option>
                 <option value="3600000">1 hour</option>
+            </select>
+        </label>
+
+        <label>
+            Clock face
+            <select id="setting-clock-style">
+                <option value="digital">Digital</option>
+                <option value="analog">Analog</option>
+            </select>
+        </label>
+
+        <label>
+            Clock typeface
+            <select id="setting-clock-font">
+                <option value="grotesk">Grotesk</option>
+                <option value="mono">Mono</option>
+                <option value="serif">Serif</option>
             </select>
         </label>
 
@@ -58,11 +244,31 @@
             </select>
         </label>
 
+        <label>
+            Focus length (min)
+            <select id="setting-pomo-work">
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+        </label>
+
+        <label>
+            Break length (min)
+            <select id="setting-pomo-break">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+        </label>
+
         <button id="settings-close">Done</button>
 
-    </div>
+    </section>
 
-    <script src="script.js"></script>
-    
+    <script src="script.js" defer></script>
+
 </body>
 </html>
