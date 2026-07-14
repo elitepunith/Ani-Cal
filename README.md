@@ -27,9 +27,9 @@ A simple website for desktop bg and timer with docker  !!
 
 ![alt text](image-1.png)
 
-![alt text](image.png)
+![alt text](previewm.png)
 
-![alt text](<preview cal.png>)
+![alt text](preview cal.png)
 
 
 ### Author 
