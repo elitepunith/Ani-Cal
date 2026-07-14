@@ -1,4 +1,4 @@
-const CACHE_NAME = 'anical-v2';
+const CACHE_NAME = 'anical-v5';
 
 const APP_SHELL = [
     'index.html',
@@ -31,7 +31,6 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
 
-    
     if (!APP_SHELL.some((file) => e.request.url.endsWith(file))) {
         return;
     }
