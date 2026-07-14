@@ -32,7 +32,6 @@ A simple website for desktop bg and timer with docker  !!
 ![alt text](<preview cal.png>)
 
 
-
 ### Author 
 
 elitepunith 
